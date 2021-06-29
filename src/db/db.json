@@ -1,0 +1,36 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "name": "Tareas",
+      "boardList": [
+        {
+          "id": 1,
+          "name": "To Do",
+          "tasksList": [
+            {
+              "id": 1,
+              "title": "Aprender Vuex",
+              "completed": false
+            },
+            {
+              "id": 2,
+              "title": "Aprender Vue",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Doing",
+          "tasksList": []
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Trabajo",
+      "boardList": []
+    }
+  ]
+}
