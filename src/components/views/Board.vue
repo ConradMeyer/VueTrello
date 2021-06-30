@@ -105,12 +105,12 @@ export default {
 
 <style scoped>
 h3 {
-  color: #37474f;
+  color: #a9cfe4;
   text-align: left;
   margin: 1.5rem;
 }
 span {
-  color: #546e7a;
+  color: #a3abaf;
 }
 div.container {
   width: 100%;
