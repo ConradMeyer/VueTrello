@@ -40,7 +40,7 @@ export default {
     ...mapState(["boards"]),
   },
   methods: {
-    ...mapActions(["getBoards", "addBoard"]),
+    ...mapActions(["getBoards", "addBoard", "get"]),
     async addBoard() {
       const board = {
         name: this.boardName,
@@ -64,7 +64,7 @@ export default {
     },
   },
   created() {
-    this.getBoards();
+    this.get();
   },
 };
 </script>

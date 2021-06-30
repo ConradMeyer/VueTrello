@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import GetBoards from '../api/GetBoards'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -17,6 +17,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    async get({commit}) {
+      const res = await GetBoards()
+      commit('setBoards', res)
+    },
     async getBoards({ commit }) {
       try {
         const res = await fetch(' http://localhost:3000/boards')
