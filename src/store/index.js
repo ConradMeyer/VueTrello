@@ -37,6 +37,33 @@ export default new Vuex.Store({
         console.log(err);
       }
     },
+    async postNewBoard({commit}, board) {
+      try {
+        const OPTS = {
+          method: "POST",
+          body: JSON.stringify(board),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        await fetch("http://localhost:3000/boards", OPTS);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async deleteBoard({commit}, id) {
+      const OPTS1 = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      try {
+        await fetch(`http://localhost:3000/boards/${id}`, OPTS1);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   },
   modules: {
   }

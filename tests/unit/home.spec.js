@@ -2,11 +2,15 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/vue'
 import '@testing-library/jest-dom'
 
 import Home from '../../src/components/views/Home'
+import { store } from '../../src/store/index'
 
 describe('Home page', () => {
-    it('renders correctly', () => {
-      render(Home) 
+  beforeEach(() => {
+    render(Home, { store })
+  })
 
-      expect(screen.getByText(/mis paneles/i)).toBeInTheDocument()
-    })
+  it('renders correctly', () => {
+
+    expect(screen.getByText(/mis paneles/i)).toBeInTheDocument()
+  })
 })

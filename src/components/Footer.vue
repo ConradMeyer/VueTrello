@@ -12,11 +12,8 @@ export default {
 
 <style scoped>
 footer.footer {
-  box-sizing: border-box;
-  background-color: #cfd8dc;
-  margin-top: 20px;
+  background-color: rgba(207, 216, 220, 0.8);
   bottom: 0;
-  left: 0;
   padding: 1rem;
   position: fixed;
   width: 100%;

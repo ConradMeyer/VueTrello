@@ -16,7 +16,8 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  background-color: #607d8b;
+  background-color: rgba(0, 0, 0, 0.6);
+  // background-color: #607d8b;
   display: flex;
   justify-content: space-between;
   padding: 1rem;

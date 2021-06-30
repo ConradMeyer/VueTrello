@@ -33,5 +33,9 @@ export default {
   text-align: center;
   margin: 0 auto;
   padding: 0;
+  background-image: url('https://i0.wp.com/hipertextual.com/wp-content/uploads/2013/11/Wallpaper-Monta%C3%B1as.jpg?fit=1200%2C800&ssl=1');
+  min-height: 100vh;
+  background-attachment:fixed ;
+  background-size: cover;
 }
 </style>

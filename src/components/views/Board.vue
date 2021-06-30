@@ -5,16 +5,18 @@
       type="text"
       placeholder="Añade una lista"
       v-model="listName"
-      @keyup.enter="add()"
+      @keyup.enter="addBoardList()"
     />
     <div class="container">
       <Column
         class="list"
         v-for="(list, index) in list.boardList"
         :key="index"
-        :listId="list.id"
         :name="list.name"
-        :tasks="list.tasksList"
+        :tasks="list.taskList"
+        @deleteBoardList="deleteBoardList"
+        @addNewTask="addNewTask"
+        @deleteNewTask="deleteNewTask"
       />
     </div>
   </section>
@@ -30,7 +32,7 @@ export default {
     Column,
   },
   props: {
-    id: String,
+    id: Number,
   },
   data() {
     return {
@@ -38,14 +40,66 @@ export default {
     };
   },
   computed: {
-    ...mapState(['list'])
+    ...mapState(["list"]),
   },
   methods: {
-    ...mapActions(['getList'])
+    ...mapActions(["getList", "postNewBoard", "deleteBoard"]),
+    async addBoardList() {
+      await this.deleteBoard(this.id);
+      const board = {
+        id: this.list.id,
+        name: this.list.name,
+        boardList: this.list.boardList,
+      };
+      const list = {
+        name: this.listName,
+        taskList: [],
+      };
+      board.boardList.push(list);
+      await this.postNewBoard(board);
+      this.listName = "";
+    },
+    async deleteBoardList(name) {
+      await this.deleteBoard(this.id);
+      const arr = this.list.boardList.filter((el) => el.name !== name);
+      const board = {
+        id: this.list.id,
+        name: this.list.name,
+        boardList: arr,
+      };
+      await this.postNewBoard(board);
+      await this.getList(this.id);
+    },
+    async addNewTask(task) {
+      await this.deleteBoard(this.id);
+      const board = {
+        id: this.list.id,
+        name: this.list.name,
+        boardList: this.list.boardList,
+      };
+      board.boardList
+        .find((el) => el.name === task.name)
+        .taskList.push(task.task);
+      await this.postNewBoard(board);
+    },
+    async deleteNewTask(obj) {
+      await this.deleteBoard(this.id);
+      const board = {
+        id: this.list.id,
+        name: this.list.name,
+        boardList: this.list.boardList,
+      };
+      const arr = board.boardList
+        .find((el) => el.name === obj.name)
+        .taskList.filter((task) => task.task !== obj.task);
+
+      board.boardList.find((el) => el.name === obj.name).taskList = arr;
+      await this.postNewBoard(board);
+    },
   },
   created() {
-    this.getList(this.id)
-  }
+    this.getList(this.id);
+  },
 };
 </script>
 
@@ -60,16 +114,15 @@ span {
 }
 div.container {
   width: 100%;
-  margin: 5px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 100px;
+  padding-bottom: 100px;
 }
 input {
   display: flex;
   background-color: #607d8b;
-  border: none;
+  border: 2px solid #546e7a;
   align-self: flex-start;
   border-radius: 3px;
   box-shadow: 3px 3px 10px -5px black;
