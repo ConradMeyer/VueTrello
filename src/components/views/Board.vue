@@ -3,9 +3,11 @@
     <h3><span>Mis paneles</span> ▸ {{ list.name }}</h3>
     <input
       type="text"
+      ref="input"
       placeholder="Añade una lista"
       v-model="listName"
       @keyup.enter="addBoardList()"
+      @mousedown="move"
     />
     <div v-if="!list.boardList" class="spinner">
       <img src="../../assets/spinner2.gif" alt="" />
@@ -16,6 +18,7 @@
     <div class="container">
       <Column
         class="list"
+        :class="color"
         v-for="(list, index) in list.boardList"
         :key="index"
         :name="list.name"
@@ -47,7 +50,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["list"]),
+    ...mapState(["list", "color"]),
   },
   methods: {
     ...mapActions(["getList", "postNewBoard", "deleteBoard"]),
@@ -126,6 +129,27 @@ export default {
 
       await this.postNewBoard(board);
     },
+    move(e) {
+      console.log(e);
+      let odiv = e.target;
+      this.$refs.input.setAttribute("data-flag", false);
+      let disX = e.clientX - odiv.offsetLeft;
+      let disY = e.clientY - odiv.offsetTop;
+      document.onmousemove = (e) => {
+        let left = e.clientX - disX;
+        let top = e.clientY - disY;
+
+        this.positionX = top;
+        this.positionY = left;
+
+        odiv.style.left = left + "px";
+        odiv.style.top = top + "px";
+      };
+      document.onmouseup = (e) => {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      };
+    },
   },
   created() {
     this.getList(this.id);
@@ -154,6 +178,7 @@ h3.no-results {
 }
 
 div.container {
+  margin-top: 100px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -173,6 +198,9 @@ input {
   outline: 0;
   padding: 1rem;
   transition: all 600ms ease;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
 }
 .list {
   max-width: 30%;
@@ -184,5 +212,23 @@ input:focus {
 }
 input::placeholder {
   color: #fafafa;
+}
+div.red {
+  background-color: rgba(197, 72, 72, 0.8);
+}
+div.black {
+  background-color: rgba(170, 182, 64, 0.8);
+}
+div.blue {
+  background-color: rgba(77, 189, 92, 0.8);
+}
+div.yellow {
+  background-color: rgba(70, 165, 160, 0.8);
+}
+div.coral {
+  background-color: rgba(119, 107, 189, 0.8);
+}
+div.brown {
+  background-color: rgba(165, 78, 146, 0.8);
 }
 </style>

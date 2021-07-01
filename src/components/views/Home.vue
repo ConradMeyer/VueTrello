@@ -2,6 +2,7 @@
   <div class="home">
     <h1>MIS PANELES 🚀</h1>
     <input
+      role="input"
       type="text"
       placeholder="👉 Añade un nuevo panel..."
       v-model="boardName"
@@ -16,6 +17,7 @@
     <div class="board-collection">
       <BoardCard
         class="boards"
+        :class="color"
         v-for="(board, index) in boards"
         :key="index"
         :name="board.name"
@@ -40,7 +42,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["boards"]),
+    ...mapState(["boards", "color"]),
   },
   methods: {
     ...mapActions(["getBoards", "addBoard", "get"]),
@@ -127,5 +129,26 @@ input {
     width: 40%;
     min-width: 300px;
   }
+}
+div.red {
+  background-color: rgba(197, 72, 72, 0.95);
+}
+div.black {
+  background-color: rgba(170, 182, 64, 0.95);
+}
+div.blue {
+  background-color: rgba(77, 189, 92, 0.95);
+}
+div.yellow {
+  background-color: rgba(70, 165, 160, 0.95);
+}
+div.coral {
+  background-color: rgba(119, 107, 189, 0.95);
+}
+div.brown {
+  background-color: rgba(165, 78, 146, 0.95);
+}
+div.default {
+  background-color: rgba(84, 110, 122, 0.95);
 }
 </style>

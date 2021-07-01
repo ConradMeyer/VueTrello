@@ -6,7 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     boards: [],
-    list: {}
+    list: {},
+    flag: false,
+    color: ''
   },
   mutations: {
     setBoards(state, payload) {
@@ -14,9 +16,23 @@ export default new Vuex.Store({
     },
     setList(state, payload) {
       state.list = payload
+    },
+    setFlag(state) {
+      state.flag = !state.flag
+    },
+    setColor(state, payload){
+      console.log(payload);
+      state.color = payload
     }
   },
   actions: {
+    handleColor({commit}, color) {
+      console.log(color);
+      commit('setColor', color)
+    },
+    toggleFlag({commit}) {
+      commit('setFlag')
+    },
     async get({ commit }) {
       setTimeout(async () => {
         const res = await GetBoards()

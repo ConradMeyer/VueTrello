@@ -37,9 +37,13 @@
           "taskList": [
             {
               "task": "Plantas",
-              "completed": false
+              "completed": true
             }
           ]
+        },
+        {
+          "name": "Doing",
+          "taskList": []
         }
       ]
     }
