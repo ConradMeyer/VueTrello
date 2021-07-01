@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from "vuex";
 export default {
   name: "BoardCard",
   props: {
@@ -19,21 +19,25 @@ export default {
     name: String,
   },
   methods: {
-    ...mapActions(['getBoards']),
+    ...mapActions(["getBoards"]),
     async deleteBoard() {
-      try {
-        const OPTS = {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-        const res = await fetch(`http://localhost:3000/boards/${this.id}`, OPTS);
-        const data = await res.json();
-        this.getBoards();
-      } catch (err) {
-        console.log(err);
-      }
+      if (window.confirm("Do you really want to delete this board?"))
+        try {
+          const OPTS = {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          };
+          const res = await fetch(
+            `http://localhost:3000/boards/${this.id}`,
+            OPTS
+          );
+          const data = await res.json();
+          this.getBoards();
+        } catch (err) {
+          console.log(err);
+        }
     },
   },
 };
@@ -71,9 +75,9 @@ export default {
     font-weight: bold;
   }
 }
-  .board:hover {
-    background-color: #90a4ae;
-  }
+.board:hover {
+  background-color: #90a4ae;
+}
 
 /* @media screen and (min-width: 600px) {
       width: 33%;

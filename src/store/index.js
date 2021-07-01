@@ -17,12 +17,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    get({ commit }) {
+    async get({ commit }) {
       setTimeout(async () => {
         const res = await GetBoards()
-        console.log(res);
         commit('setBoards', res)
-      }, 3000);
+      }, 2000);
     },
     async getBoards({ commit }) {
       try {
@@ -44,7 +43,7 @@ export default new Vuex.Store({
         catch (err) {
           console.log(err);
         }
-      }, 3000);
+      }, 1000);
     },
     async postNewBoard({ commit }, board) {
       try {

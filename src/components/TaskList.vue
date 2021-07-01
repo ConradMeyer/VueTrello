@@ -1,8 +1,16 @@
 <template>
   <div class="tasks">
     <div v-for="(task, index) in tasks" :key="index">
-      {{ task.task }}
-      <img src="../assets/cross.svg" alt="delete" @click="delet(task.task)" />
+      <div
+        class="task"
+        @dblclick="completed(task)"
+        :class="task.completed ? 'completed' : 'not-completed'"
+      >
+        <h4>
+          {{ task.task }}
+        </h4>
+        <img src="../assets/cross.svg" alt="delete" @click="delet(task.task)" />
+      </div>
     </div>
     <input
       type="text"
@@ -38,6 +46,13 @@ export default {
         this.title = "";
       }
     },
+    completed(task) {
+      const obj = {
+        task: task.task,
+        completed: !task.completed,
+      };
+      this.$emit("editTask", obj);
+    },
   },
 };
 </script>
@@ -46,7 +61,7 @@ export default {
 div.tasks {
   display: flex;
   flex-direction: column;
-  div {
+  div.task {
     list-style: none;
     background-color: #fafafa;
     border-radius: 3px;
@@ -56,6 +71,7 @@ div.tasks {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
     img {
       width: 12px;
       cursor: pointer;
@@ -65,9 +81,8 @@ div.tasks {
     }
   }
 }
-li.completed {
-  background-color: #cfd8dc;
-  color: #90a4ae;
+div.completed {
+  text-decoration: line-through red 2px;
 }
 
 input {

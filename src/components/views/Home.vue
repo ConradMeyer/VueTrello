@@ -10,7 +10,7 @@
     <h3 v-if="!boards" class="no-results">
       Oops...🤷‍♂️ No hemos encontrado ningún panel.
     </h3>
-    <div v-if="boards < 1" class="spinner">
+    <div v-if="boards < 1" class="spinner" role="spinner">
       <img src="../../assets/spinner2.gif" alt="spinner" />
     </div>
     <div class="board-collection">

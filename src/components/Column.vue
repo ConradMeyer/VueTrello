@@ -4,7 +4,7 @@
       <h3>{{ name }}</h3>
       <img src="../assets/cross.svg" alt="delete" @click="deleteList()" />
     </header>
-    <TaskList :tasks="tasks" @addTask="addTask" @deleteTask="deleteTask" />
+    <TaskList :tasks="tasks" @addTask="addTask" @deleteTask="deleteTask" @editTask="editTask" />
   </div>
 </template>
 
@@ -42,6 +42,13 @@ export default {
         name: this.name
       }
       this.$emit('deleteNewTask', obj)
+    },
+    editTask(task) {
+      const obj = {
+        task,
+        name: this.name
+      }
+      this.$emit('editNewTask', obj)
     }
   },
 };

@@ -5,6 +5,7 @@
       <a class="name" href="https://github.com/ConradMeyer" target="_blank"
         >Conrad Meyer-Alten
       </a>
+      2021
       |</span
     >
     <a

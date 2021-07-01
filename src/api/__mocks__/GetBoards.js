@@ -1,4 +1,5 @@
-export default function GetBoards() {
+export default async function GetBoards() {
+  console.log('dentro mock');
   const boards =
     [
       {

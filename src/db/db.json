@@ -1,37 +1,42 @@
 {
   "boards": [
     {
-      "id": 2,
+      "id": 3,
       "name": "Trabajo",
       "boardList": [
         {
           "name": "To Do",
           "taskList": [
             {
-              "task": "Aprender Vuex",
+              "task": "Refactorizar",
               "completed": false
             },
             {
-              "task": "Testing",
+              "task": "Modularización",
               "completed": false
             }
           ]
         },
         {
-          "name": "Done",
-          "taskList": []
+          "name": "Doing",
+          "taskList": [
+            {
+              "task": "Testing",
+              "completed": false
+            }
+          ]
         }
       ]
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Casa",
       "boardList": [
         {
-          "name": "To Do",
+          "name": "To do",
           "taskList": [
             {
-              "task": "Aprender Testing",
+              "task": "Plantas",
               "completed": false
             }
           ]
