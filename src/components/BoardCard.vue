@@ -41,7 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 .board {
-  background-color: #546e7a;
+  background-color: rgba(84, 110, 122, 0.95);
   box-shadow: 3px 3px 10px -5px black;
   border-radius: 5px;
   margin: 0.5rem 1.5rem;

@@ -81,13 +81,15 @@ input {
   padding: 0.75rem 0;
   transition: background-color 600ms ease;
   width: 100%;
+  margin: 0.25rem 0;
+  padding: 1rem;
 }
 input:focus,
 input:active {
   background-color: #fafafa;
   border-bottom: 1px solid #ccc;
-  margin: 0.25rem 0;
-  padding: 1rem;
+  // margin: 0.25rem 0;
+  // padding: 1rem;
 }
 
 input::placeholder {

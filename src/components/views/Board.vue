@@ -7,6 +7,9 @@
       v-model="listName"
       @keyup.enter="addBoardList()"
     />
+    <div v-if="!list.boardList" class="spinner">
+      <img src="../../assets/spinner2.gif" alt="" />
+    </div>
     <div class="container">
       <Column
         class="list"
@@ -112,6 +115,12 @@ h3 {
 span {
   color: #a3abaf;
 }
+
+div.spinner img {
+  margin-top: 50px;
+  width: 100px;
+}
+
 div.container {
   width: 100%;
   display: flex;
@@ -139,7 +148,7 @@ input {
 }
 input:active,
 input:focus {
-  background-color: #fafafa;
+  background-color: rgba(250, 250, 250, 0.6);
 }
 input::placeholder {
   color: #fafafa;

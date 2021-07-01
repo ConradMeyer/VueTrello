@@ -1,15 +1,18 @@
 <template>
   <div class="home">
-    <h1>MIS PANELES</h1>
+    <h1>MIS PANELES 🚀</h1>
     <input
       type="text"
       placeholder="👉 Añade un nuevo panel..."
       v-model="boardName"
       @keyup.enter="addBoard()"
     />
-    <h3 v-if="boards < 1" class="no-results">
+    <h3 v-if="!boards" class="no-results">
       Oops...🤷‍♂️ No hemos encontrado ningún panel.
     </h3>
+    <div v-if="boards < 1" class="spinner">
+      <img src="../../assets/spinner2.gif" alt="spinner" />
+    </div>
     <div class="board-collection">
       <BoardCard
         class="boards"
@@ -71,13 +74,20 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
-  text-align: center;
+  text-align: start;
   margin: 1.5rem;
   color: whitesmoke;
 }
 
 .no-results {
   margin-top: 50px;
+  color: white;
+  font-size: 1.5rem;
+}
+
+div.spinner img {
+  margin-top: 50px;
+  width: 100px;
 }
 
 input {

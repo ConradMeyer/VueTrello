@@ -17,9 +17,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async get({commit}) {
-      const res = await GetBoards()
-      commit('setBoards', res)
+    get({ commit }) {
+      setTimeout(async () => {
+        const res = await GetBoards()
+        console.log(res);
+        commit('setBoards', res)
+      }, 3000);
     },
     async getBoards({ commit }) {
       try {
@@ -31,17 +34,19 @@ export default new Vuex.Store({
         console.log(err);
       }
     },
-    async getList({ commit }, id) {
-      try {
-        const res = await fetch(`http://localhost:3000/boards/${id}`)
-        const data = await res.json()
-        commit('setList', data)
-      }
-      catch (err) {
-        console.log(err);
-      }
+    getList({ commit }, id) {
+      setTimeout(async () => {
+        try {
+          const res = await fetch(`http://localhost:3000/boards/${id}`)
+          const data = await res.json()
+          commit('setList', data)
+        }
+        catch (err) {
+          console.log(err);
+        }
+      }, 3000);
     },
-    async postNewBoard({commit}, board) {
+    async postNewBoard({ commit }, board) {
       try {
         const OPTS = {
           method: "POST",
@@ -55,7 +60,7 @@ export default new Vuex.Store({
         console.log(err);
       }
     },
-    async deleteBoard({commit}, id) {
+    async deleteBoard({ commit }, id) {
       const OPTS1 = {
         method: "DELETE",
         headers: {

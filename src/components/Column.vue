@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 div.column {
-  background-color: #eceff1;
+  background-color: rgba(236, 239, 241, 0.8);
   border-radius: 3px;
   box-shadow: 3px 3px 10px -5px black;
   margin: 1rem;
