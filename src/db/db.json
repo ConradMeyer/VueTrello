@@ -1,6 +1,33 @@
 {
   "boards": [
     {
+      "id": 2,
+      "name": "Casa",
+      "boardList": [
+        {
+          "name": "To do",
+          "taskList": [
+            {
+              "task": "Buscar casa",
+              "completed": false
+            },
+            {
+              "task": "Plantas",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "name": "Doing",
+          "taskList": []
+        },
+        {
+          "name": "Done",
+          "taskList": []
+        }
+      ]
+    },
+    {
       "id": 3,
       "name": "Trabajo",
       "boardList": [
@@ -12,8 +39,16 @@
               "completed": false
             },
             {
-              "task": "Modularización",
+              "task": "Reunión Road&Rail",
               "completed": false
+            },
+            {
+              "task": "Testing ",
+              "completed": false
+            },
+            {
+              "task": "Modularización",
+              "completed": true
             }
           ]
         },
@@ -25,24 +60,9 @@
               "completed": false
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Casa",
-      "boardList": [
-        {
-          "name": "To do",
-          "taskList": [
-            {
-              "task": "Plantas",
-              "completed": true
-            }
-          ]
         },
         {
-          "name": "Doing",
+          "name": "Done",
           "taskList": []
         }
       ]
